@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <Resource name="jdbc/javeee_app"
+              auth="Container"
+              type="javax.sql.DataSource"
+              initialSize="5"
+              maxTotal="20"
+              username="root"
+              password="arkagdynia"
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/javeee_app" />
+    <Realm className="org.apache.catalina.realm.DataSourceRealm"
+           dataSourceName="jdbc/javeee_app"
+           userTable="user"
+           userNameCol="username"
+           userCredCol="password"
+           userRoleTable="user_role"
+           roleNameCol="role_name"
+           localDataSource="true" />
+</Context>
