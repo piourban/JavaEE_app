@@ -1,16 +1,16 @@
 # JavaEE_app
 This app is a part of an introduction to the Java EE platform course provided by JavaStart (javastart.pl).<br> 
 This version provide basic functionality e.g. to add new notes, to login, to registe, to vote for particular notes .<br> 
-Application will be still improving.
+Application will be still improving.<br> 
 
-Used technologies:
--Spring Jdbctemplate
--MySQL database
--MD5 algorithm
+Used technologies:<br> 
+- Spring Jdbctemplate<br> 
+- MySQL database<br> 
+- MD5 algorithm<br> 
 
-Known issues:
-- Styling problem with navbar fragment - styling issue.
+Known issues:<br> 
+- Styling problem with navbar fragment - styling issue.<br> 
 
-Future improvements:
--Error handling e.g. passed email is already used.
--Bookmark with notes belong to logged in user, with option to delete or update.
+Future improvements:<br> 
+- Error handling e.g. passed email is already used.<br> 
+- Bookmark with notes belong to logged in user, with option to delete or update.<br> 
