@@ -3,6 +3,8 @@ This app is a part of an introduction to the Java EE platform course provided by
 This version provide basic functionality e.g. to add new notes, to login, to registe, to vote for particular notes .<br> 
 Application will be still improving.<br> 
 
+Before you run code, remember to fulfill datasource details in "context.xml" file.
+
 Used technologies:<br> 
 - Spring Jdbctemplate<br> 
 - MySQL database<br> 
