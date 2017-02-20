@@ -5,10 +5,10 @@
               type="javax.sql.DataSource"
               initialSize="5"
               maxTotal="20"
-              username="root"
-              password="arkagdynia"
+              username=""
+              password=""
               driverClassName="com.mysql.jdbc.Driver"
-              url="jdbc:mysql://localhost:3306/java_ee" />
+              url="" />
     <Realm className="org.apache.catalina.realm.DataSourceRealm"
            dataSourceName="jdbc/java_ee"
            userTable="user"
