@@ -17,7 +17,7 @@ public class RegisterController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/Views/register.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/register.jsp").forward(req, resp);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class RegisterController extends HttpServlet {
 
         UserService userService = new UserService();
         userService.addUser(username, email, password);
-        resp.sendRedirect("index.jsp");
+        resp.sendRedirect("/home");
 
     }
 }

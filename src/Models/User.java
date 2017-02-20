@@ -15,12 +15,11 @@ public class User {
 
     public User(User user) {}
 
-    public User(long id, String username, String email, String password, boolean active) {
+    public User(long id, String username, String email, String password) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.active = active;
     }
 
     public long getId() {
@@ -89,13 +88,4 @@ public class User {
 
     }
 
-    @Override
-    public int hashCode() {
-        int result = (int) (getId() ^ (getId() >>> 32));
-        result = 31 * result + getUsername().hashCode();
-        result = 31 * result + getEmail().hashCode();
-        result = 31 * result + getPassword().hashCode();
-        result = 31 * result + (isActive() ? 1 : 0);
-        return result;
-    }
 }

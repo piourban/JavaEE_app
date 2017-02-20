@@ -7,5 +7,5 @@ import Models.Vote;
  */
 public interface VoteDAO extends GenericDAO<Vote, Long> {
 
-    public Vote getVoteByUserIdNoteId(long userId, long NoteId);
+    public Vote getVoteByUserIdNoteId(long userId, long noteId);
 }

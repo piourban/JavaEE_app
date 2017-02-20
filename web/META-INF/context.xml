@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
-    <Resource name="jdbc/javeee_app"
+    <Resource name="jdbc/java_ee"
               auth="Container"
               type="javax.sql.DataSource"
               initialSize="5"
@@ -8,13 +8,14 @@
               username="root"
               password="arkagdynia"
               driverClassName="com.mysql.jdbc.Driver"
-              url="jdbc:mysql://localhost:3306/javeee_app" />
+              url="jdbc:mysql://localhost:3306/java_ee" />
     <Realm className="org.apache.catalina.realm.DataSourceRealm"
-           dataSourceName="jdbc/javeee_app"
+           dataSourceName="jdbc/java_ee"
            userTable="user"
            userNameCol="username"
            userCredCol="password"
            userRoleTable="user_role"
            roleNameCol="role_name"
-           localDataSource="true" />
+           localDataSource="true"
+           digest="MD5"/>
 </Context>

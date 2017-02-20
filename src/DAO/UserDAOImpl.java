@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -19,8 +20,8 @@ import java.util.List;
  */
 public class UserDAOImpl implements UserDAO {
 
-    private final static String create = "insert into user (username, email, isActive, password) values (:username, :email, :isActive, :password)";
-    private final static String role = "insert into user_role (username) values (:username)";
+    private final static String create = "insert into user (username, email, isActive, password) values (:username, :email, :active, :password)";
+    private final static String role = "INSERT INTO user_role(username) VALUES(:username)";
     private final static String read = "SELECT user_id, username, email, password, isActive FROM user WHERE user_id = :id";
     private final static String readByName = "SELECT user_id, username, email, password, isActive FROM user WHERE username = :username";
 
@@ -33,23 +34,31 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public User create(User user) {
 
-        User temporaryUser = new User(user);
         KeyHolder keyHolder = new GeneratedKeyHolder();
         SqlParameterSource sqlParameterSource = new BeanPropertySqlParameterSource(user);
         int rows = template.update(create, sqlParameterSource, keyHolder);
 
         if (rows > 0) {
 
-            temporaryUser.setId((Long) keyHolder.getKey());
-            setPrivigiles(temporaryUser);
+            user.setId((Long) keyHolder.getKey());
+            setPrivigiles(user);
+            System.out.println(user.getUsername());
         }
-        return temporaryUser;
+        return user;
     }
 
     private void setPrivigiles(User user) {
 
         SqlParameterSource sqlParameterSource = new BeanPropertySqlParameterSource(user);
         template.update(role, sqlParameterSource);
+        /*ResultSet resultSet;
+        try {
+            PreparedStatement preparedStatement = ConnectionProvider.geConnection().prepareStatement(role);
+            preparedStatement.setString(1,user.getUsername());
+            System.out.println(user.getUsername());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }*/
     }
 
     @Override
@@ -80,7 +89,10 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User getUserByUsername(String username) {
-        return null;
+        User resultUser = null;
+        SqlParameterSource paramSource = new MapSqlParameterSource("username", username);
+        resultUser = template.queryForObject(readByName, paramSource, new UserRowMapper());
+        return resultUser;
     }
 
 

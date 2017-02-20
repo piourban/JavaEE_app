@@ -27,7 +27,7 @@ public class ConnectionProvider {
                 Context initialContext = new InitialContext();
                 Context envContext = (Context) initialContext.lookup("java:comp/env");
 
-                DataSource ds = (DataSource) envContext.lookup("jdbc/javeee_app");
+                DataSource ds = (DataSource) envContext.lookup("jdbc/java_ee");
                 dataSource = ds;
             } catch (NamingException e) {
                 e.printStackTrace();

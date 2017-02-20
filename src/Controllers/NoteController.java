@@ -20,7 +20,7 @@ public class NoteController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getUserPrincipal() != null) {
-            req.getRequestDispatcher("/WEB-INF/Views/new.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/new.jsp").forward(req, resp);
         } else {
             resp.sendError(403);
         }
@@ -28,7 +28,7 @@ public class NoteController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        req.setCharacterEncoding("UTF-8");
         String name = req.getParameter("inputName");
         String description = req.getParameter("inputDescription");
         String url = req.getParameter("inputUrl");
@@ -37,7 +37,7 @@ public class NoteController extends HttpServlet {
         if (req.getUserPrincipal() != null) {
             NoteService noteService = new NoteService();
             noteService.add(name, description, url, user);
-            resp.sendRedirect("index.jsp");
+            resp.sendRedirect("/home");
         } else {
             resp.sendError(403);
         }

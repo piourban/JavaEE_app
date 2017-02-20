@@ -22,7 +22,7 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getUserPrincipal() != null){
-            resp.sendRedirect("index.jsp");
+            resp.sendRedirect("/home");
         }else {
             resp.sendError(403);
         }
